@@ -1,0 +1,62 @@
+{
+  "translation": {
+    "welcome": {
+      "badge": "Анализ SaleScout",
+      "title": "Давайте проанализируем прибыль вашего магазина",
+      "subtitle": "Узнайте за 30 секунд, как выйти в ТОП-1 на Kaspi",
+      "cta": "Начать анализ"
+    },
+    "input": {
+      "title": "Введите данные",
+      "subtitle": "Оба поля обязательны для точного анализа.",
+      "back": "Назад",
+      "productLabel": "Ссылка на товар",
+      "productPlaceholder": "https://kaspi.kz/shop/p/...",
+      "shopLabel": "Название магазина",
+      "shopPlaceholder": "Ваш магазин на Kaspi",
+      "continue": "Продолжить",
+      "errors": {
+        "url": "Ссылка должна вести на kaspi.kz",
+        "shop": "Введите название магазина (мин. 2 символа)"
+      }
+    },
+    "analysis": {
+      "title": "Результат анализа по товару",
+      "date": "/ {{date}}",
+      "cta": "Запустить 3 дня бесплатно",
+      "error": "Ошибка анализа",
+      "unknownSeller": "Неизвестный продавец",
+      "ranking": {
+        "kicker": "Позиция на Kaspi",
+        "title": "Ваш магазин растёт с SaleScout",
+        "yourShop": "Ваш магазин",
+        "select": "Выбрать"
+      },
+      "sticky": {
+        "you": "Вы",
+        "goal": "Цель",
+        "leader": "Лидер",
+        "trial": "TRIAL 3 дня",
+        "diff": "Разница",
+        "needReduce": "Нужно снизить на {{amount}}",
+        "needReduceShort": "Снизить на",
+        "youLower": "Вы ниже на {{amount}}",
+        "youLowerShort": "Ниже на",
+        "pricesEqual": "Цены равны",
+        "position": "Позиция: #{{rank}}",
+        "resultsTitle": "Результаты анализа",
+        "cta": "Запустить 3 дня бесплатно",
+        "cancel": "Отмена в 1 клик"
+      }
+    },
+    "errors": {
+      "genericTitle": "Упс, что-то пошло не так",
+      "retry": "Попробовать снова",
+      "analysisRender": "Ошибка отображения анализа",
+      "analyzeFailed": "Не удалось выполнить анализ"
+    },
+    "footer": {
+      "text": "© 2026 SaleScout — Экосистема для селлеров №1. Все права защищены."
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "translation": {
+    "welcome": {
+      "badge": "SaleScout Analysis",
+      "title": "Let\u2019s analyze your store\u2019s profit",
+      "subtitle": "See in 30 seconds how to reach Top-1 on Kaspi",
+      "cta": "Start analysis"
+    },
+    "input": {
+      "title": "Enter your data",
+      "subtitle": "Both fields are required for accurate analysis.",
+      "back": "Back",
+      "productLabel": "Product link",
+      "productPlaceholder": "https://kaspi.kz/shop/p/...",
+      "shopLabel": "Store name",
+      "shopPlaceholder": "Your Kaspi store",
+      "continue": "Continue",
+      "errors": {
+        "url": "The link must point to kaspi.kz",
+        "shop": "Enter a store name (min. 2 characters)"
+      }
+    },
+    "analysis": {
+      "title": "Product analysis result",
+      "date": "/ {{date}}",
+      "cta": "Start 3-day free trial",
+      "error": "Analysis error",
+      "unknownSeller": "Unknown seller",
+      "ranking": {
+        "kicker": "Kaspi position",
+        "title": "Your store is growing with SaleScout",
+        "yourShop": "Your store",
+        "select": "Select"
+      },
+      "sticky": {
+        "you": "You",
+        "goal": "Goal",
+        "leader": "Leader",
+        "trial": "TRIAL 3 days",
+        "diff": "Difference",
+        "needReduce": "Need to reduce by {{amount}}",
+        "needReduceShort": "Reduce by",
+        "youLower": "You're lower by {{amount}}",
+        "youLowerShort": "Lower by",
+        "pricesEqual": "Prices are equal",
+        "position": "Position: #{{rank}}",
+        "resultsTitle": "Analysis results",
+        "cta": "Start 3-day free trial",
+        "cancel": "Cancel in 1 click"
+      }
+    },
+    "errors": {
+      "genericTitle": "Oops, something went wrong",
+      "retry": "Try again",
+      "analysisRender": "Analysis rendering error",
+      "analyzeFailed": "Failed to run analysis"
+    },
+    "footer": {
+      "text": "\u00a9 2026 SaleScout \u2014 #1 ecosystem for sellers. All rights reserved."
+    }
+  }
+}

@@ -1,0 +1,94 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-height: 0;
+  touch-action: manipulation;
+  --topOffset: 132px;
+  --stickyH: 84px;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 14px;
+  padding-bottom: 0.25rem;
+  border-bottom: none;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  row-gap: 0.25rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+.ctaBtn:hover {
+  background: #1d4ed8;
+}
+
+.rankingCenter {
+  width: 100%;
+  scroll-margin-top: var(--topOffset);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.bottomSpacer {
+  display: none;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .root {
+    --topOffset: 56px;
+    --stickyH: 0px;
+    gap: 0;
+  }
+}
+
+/* ── iPad / tablet landscape only ── */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (any-pointer: coarse) {
+  .root {
+    gap: 0;
+  }
+}

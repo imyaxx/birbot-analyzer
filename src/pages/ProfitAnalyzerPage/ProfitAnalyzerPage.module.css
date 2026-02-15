@@ -1,0 +1,86 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  width: 100%;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  border-top: 1px solid #f3f4f6;
+  text-align: center;
+}
+
+.footerText {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* Analysis step: lock to viewport */
+.rootAnalysis {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  --sticky-bottom: 20px;
+  --sticky-gap: 8px;
+}
+
+.rootAnalysis .content {
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+  padding-top: 0;
+  padding-bottom: calc(
+    var(--sticky-h, 140px) + var(--sticky-bottom, 20px) + var(--sticky-gap, 8px)
+  );
+}
+
+.rootAnalysis .footer {
+  display: none;
+}
+
+/* ── Mobile: steps 1 & 2 ── */
+@media (max-width: 767px) {
+  .content {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+/* ── Mobile: analysis step ── */
+@media (max-width: 767px) {
+  .rootAnalysis {
+    --sticky-bottom: 8px;
+  }
+
+  .rootAnalysis .content {
+    padding: 0 0.5rem;
+    padding-bottom: calc(
+      var(--sticky-h, 200px) + var(--sticky-bottom, 8px) + var(--sticky-gap, 8px)
+    );
+  }
+}
+
+/* ── iPad / tablet landscape only: keep analysis fully on one screen ── */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (any-pointer: coarse) {
+  .rootAnalysis {
+    --sticky-bottom: 6px;
+    --sticky-gap: 0px;
+  }
+
+  .rootAnalysis .content {
+    overflow: hidden;
+    padding-bottom: calc(var(--sticky-h, 84px) + var(--sticky-bottom, 6px));
+  }
+}

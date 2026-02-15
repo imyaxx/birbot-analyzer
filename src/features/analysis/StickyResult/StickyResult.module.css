@@ -1,0 +1,684 @@
+/* ── Container (desktop sticky) ── */
+.root {
+  position: fixed;
+  box-sizing: border-box;
+  left: 50%;
+  right: auto;
+  bottom: var(--sticky-bottom, 20px);
+  width: min(1100px, calc(100% - 32px));
+  z-index: 55;
+  background: #f14432;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.15);
+  padding: 12px 20px;
+  will-change: transform;
+
+  /* slide-up */
+  opacity: 0;
+  transform: translateX(-50%) translateY(110%);
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease-out;
+  pointer-events: none;
+}
+
+.rootVisible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ── Section label ── */
+.sectionLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+  margin: 0 0 0.375rem;
+  line-height: 1;
+}
+
+/* ── Split columns ── */
+.columns {
+  display: flex;
+  align-items: stretch;
+}
+
+.column {
+  flex: 1;
+  min-width: 0;
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background: #e5e7eb;
+  margin: 0 0.625rem;
+  flex-shrink: 0;
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.columnMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.125rem;
+  padding-left: 2.25rem;
+}
+
+/* ── Rank badge ── */
+.rankBadge {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.rankBadgeLeader {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
+}
+
+/* ── Text ── */
+.storeName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.metaItem {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+
+/* ── Solo block (when user is #1) ── */
+.soloBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+}
+
+.soloBlock .rankBadge {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+}
+
+.soloInfo {
+  min-width: 0;
+}
+
+.soloInfo .storeName {
+  font-size: 0.875rem;
+}
+
+.soloMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.125rem;
+}
+
+/* ── Visibility ── */
+.mobileOnly {
+  display: none;
+}
+
+.desktopOnly {
+  display: none;
+}
+
+.desktopStickyOnly {
+  display: flex;
+  width: 100%;
+}
+
+/* ── Mobile markup (hidden on desktop, kept for future use) ── */
+.mRow1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.mRankGroup {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.mYourRank {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.mArrow {
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.mGoalRank {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.2;
+}
+
+.mTrialTag {
+  font-size: 8px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  white-space: nowrap;
+}
+
+.mRow2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 6px 8px;
+}
+
+.mPriceCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.mPriceLabel {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.012em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+  margin-bottom: 1px;
+  line-height: 1.2;
+}
+
+.mPriceValue {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+.mPriceDivider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.mRow3 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+
+.mDiffLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.012em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+}
+
+.mDiffValue {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.diffNeutral {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.diffNegative {
+  color: #FFE9E6;
+}
+
+.diffPositive {
+  color: #fff;
+}
+
+.mCtaBtn {
+  width: 100%;
+  padding: 8px;
+  min-height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+  color: #F14432;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mCtaBtn:active {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mCancelText {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+/* ── Desktop sticky layout ── */
+.dRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  width: 100%;
+}
+
+.dLeft {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.dRankGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dYourRank {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.dGoalRank {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.dTrialTag {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  white-space: nowrap;
+}
+
+/* ── Prices pill (center) ── */
+.dPrices {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.75fr);
+  gap: 0 12px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 6px 12px;
+}
+
+.dPriceCol {
+  min-width: 0;
+}
+
+.dPriceLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.014em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2px;
+  line-height: 1.15;
+}
+
+.dPriceValue {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.dPriceDivider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.18);
+  justify-self: center;
+  align-self: center;
+  border-radius: 1px;
+}
+
+.dDiffCol {
+  min-width: 0;
+}
+
+.dDiffLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.014em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2px;
+  line-height: 1.15;
+}
+
+.dDiffValue {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+  max-width: 100%;
+  line-height: 1.3;
+}
+
+.dDiffInline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 5px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.dDiffText {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.dDiffAmount {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+  max-width: 100%;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── CTA button (right) ── */
+.dCtaBtn {
+  flex: 0 0 auto;
+  min-width: clamp(124px, 14vw, 220px);
+  white-space: nowrap;
+  padding: 8px 14px;
+  max-width: 320px;
+  height: 40px;
+  background: #fff;
+  color: #f14432;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    background 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dCtaBtn svg {
+  flex-shrink: 0;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dCtaBtn:hover {
+    background: linear-gradient(135deg, #fff8f6 0%, #ffebe6 100%);
+    color: #d53725;
+    box-shadow:
+      0 8px 18px rgba(113, 28, 20, 0.24),
+      0 0 0 1px rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px) scale(1.015);
+  }
+
+  .dCtaBtn:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.dCtaBtn:active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(0) scale(1);
+}
+
+/* ══════════════════════════════════════════
+   MOBILE — show mobileOnly, hide desktop
+   ══════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .root {
+    width: calc(100% - 16px);
+    border-radius: 14px;
+    padding: 10px 12px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    bottom: 8px;
+  }
+
+  .rootVisible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .desktopStickyOnly {
+    display: none;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+}
+
+/* ══════════════════════════════════════════
+   TABLET — use desktop sticky layout, enhanced
+   ══════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .root {
+    padding: 18px 20px;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+    border-radius: 16px;
+  }
+
+  .dYourRank {
+    font-size: 14px;
+  }
+
+  .dGoalRank {
+    font-size: 12px;
+  }
+
+  .dPrices {
+    flex: 1 1 320px;
+    gap: 0 8px;
+    padding: 8px 12px;
+  }
+
+  .dCtaBtn {
+    min-width: 140px;
+  }
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP — safe-area for consistency
+   ══════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .root {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── iPad / tablet landscape only: compact but readable sticky ── */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (any-pointer: coarse) {
+  .root {
+    width: min(920px, calc(100% - 16px));
+    border-radius: 10px;
+    padding: 5px 12px;
+    padding-bottom: calc(5px + env(safe-area-inset-bottom));
+    bottom: 14px;
+  }
+
+  .dRow {
+    gap: 8px;
+  }
+
+  .dLeft {
+    gap: 6px;
+  }
+
+  .dYourRank {
+    font-size: 12px;
+  }
+
+  .dGoalRank {
+    font-size: 10px;
+  }
+
+  .dTrialTag {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  .dPrices {
+    flex: 1 1 280px;
+    gap: 0 8px;
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+
+  .dPriceLabel,
+  .dDiffLabel {
+    font-size: 9px;
+    margin-bottom: 1px;
+  }
+
+  .dPriceValue,
+  .dDiffValue,
+  .dDiffAmount {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  .dPriceDivider {
+    height: 14px;
+  }
+
+  .dCtaBtn {
+    min-width: 110px;
+    height: 30px;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}

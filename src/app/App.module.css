@@ -1,0 +1,132 @@
+/* ── Global reset & base (from globals.css) ── */
+:global(*),
+:global(*::before),
+:global(*::after) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:global(body) {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:global(*:focus-visible) {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+:global(img),
+:global(svg) {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── App layout ── */
+.root {
+  min-height: 100vh;
+  background: #f9fafb;
+  overflow-x: hidden;
+}
+
+.root ::selection {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.navInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.logoIcon {
+  width: 2rem;
+  height: 2rem;
+  background: #2563eb;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoLetter {
+  color: #fff;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.logoText {
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: -0.025em;
+  display: inline;
+}
+
+.progressSlot {
+  display: none;
+}
+
+.langWrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .navInner {
+    height: 2.75rem;
+    padding: 0 0.625rem;
+  }
+
+  .logoIcon {
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 0.5rem;
+  }
+
+  .logoLetter {
+    font-size: 0.75rem;
+  }
+
+  .logoText {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ── Ultra-narrow ── */
+@media (max-width: 359px) {
+  .navInner {
+    height: 2.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .logoText {
+    font-size: 0.6875rem;
+  }
+}

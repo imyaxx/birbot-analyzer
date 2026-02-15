@@ -1,0 +1,306 @@
+/* ── Loading skeleton ── */
+.loadingRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+  animation: pulse 2s infinite;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.skeletonCard {
+  height: 8rem;
+  background: #e5e7eb;
+  border-radius: 1.25rem;
+}
+
+.skeletonTwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.skeletonHalf {
+  height: 16rem;
+  background: #e5e7eb;
+  border-radius: 1.25rem;
+}
+
+.skeletonFull {
+  height: 24rem;
+  background: #e5e7eb;
+  border-radius: 1.25rem;
+}
+
+/* ── Error state ── */
+.errorRoot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.errorIcon {
+  width: 4rem;
+  height: 4rem;
+  background: #fef2f2;
+  color: #ef4444;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.errorTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.errorMessage {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  max-width: 28rem;
+}
+
+.errorActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: min(100%, 19rem);
+}
+
+.retryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  width: 100%;
+}
+.retryBtn:hover {
+  background: #1d4ed8;
+}
+
+.secondaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  background: #ffffff;
+  color: #374151;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+  box-shadow: 0 6px 14px rgba(17, 24, 39, 0.08);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.secondaryBtn svg {
+  transition: transform 0.2s ease;
+}
+.secondaryBtn:hover {
+  color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+
+.secondaryBtn:hover svg {
+  transform: translateX(-2px);
+}
+.secondaryBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #e5e7eb;
+}
+
+.secondaryBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.08);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ══════════════════════════════════════════
+   SKELETON — TABLET
+   ══════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .loadingRoot {
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .skeletonGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .skeletonCard {
+    height: 6.5rem;
+  }
+
+  .skeletonHalf {
+    height: 13rem;
+  }
+
+  .skeletonFull {
+    height: 18rem;
+  }
+}
+
+/* ── SKELETON — iPAD LANDSCAPE ── */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (any-pointer: coarse) {
+  .loadingRoot {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .skeletonGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skeletonCard {
+    height: 5rem;
+  }
+
+  .skeletonTwoCol {
+    gap: 1rem;
+  }
+
+  .skeletonHalf {
+    height: 10rem;
+  }
+
+  .skeletonFull {
+    height: 14rem;
+  }
+}
+
+/* ══════════════════════════════════════════
+   SKELETON — MOBILE
+   ══════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .loadingRoot {
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+  }
+
+  .skeletonGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skeletonCard {
+    height: 5.5rem;
+    border-radius: 1rem;
+  }
+
+  .skeletonTwoCol {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skeletonHalf {
+    height: 10rem;
+    border-radius: 1rem;
+  }
+
+  .skeletonFull {
+    height: 14rem;
+    border-radius: 1rem;
+  }
+}
+
+/* ── SKELETON — SMALL MOBILE ── */
+@media (max-width: 480px) {
+  .loadingRoot {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .skeletonGrid {
+    gap: 0.5rem;
+  }
+
+  .skeletonCard {
+    height: 4.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .skeletonHalf {
+    height: 8rem;
+    border-radius: 0.75rem;
+  }
+
+  .skeletonFull {
+    height: 11rem;
+    border-radius: 0.75rem;
+  }
+}
+
+/* ── SKELETON — ULTRA-NARROW ── */
+@media (max-width: 359px) {
+  .loadingRoot {
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .skeletonCard {
+    height: 3.5rem;
+    border-radius: 0.625rem;
+  }
+
+  .skeletonHalf {
+    height: 6rem;
+    border-radius: 0.625rem;
+  }
+
+  .skeletonFull {
+    height: 8rem;
+    border-radius: 0.625rem;
+  }
+}
