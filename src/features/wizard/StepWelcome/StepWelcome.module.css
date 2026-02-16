@@ -272,9 +272,9 @@
 
 .floatIcon1 { top: 8%;  right: 15%; }
 .floatIcon2 { top: 20%; left: 5%;  }
-.floatIcon3 { bottom: 20%; right: 5%; }
+.floatIcon3 { bottom: 10%; right: 5%; }
 .floatIcon4 { bottom: 8%; left: 18%; }
-.floatIcon5 { top: 50%; right: -2%; transform: translateY(-50%); }
+.floatIcon5 { top: 42%; right: -2%; transform: translateY(-50%); }
 
 .dotGrid {
   position: absolute;
