@@ -1,18 +1,66 @@
+/* ── Card ── */
 .root {
-  background: #ffffff;
+  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 50%, #f5f5f5 100%);
   border-radius: 1.5rem;
-  border: 1px solid #f3f4f6;
+  border: 1px solid #e5e7eb;
   box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1),
-    0 0 15px -3px rgba(30, 64, 175, 0.05);
-  padding: 2rem;
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1),
+    0 0 15px -3px rgba(20, 20, 20, 0.05);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Shimmer sweep */
+.root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* ── Header ── */
 .headerRow {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  background: #141414;
+  color: #f5f5f5;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  width: fit-content;
 }
 
 .title {
@@ -20,6 +68,10 @@
   font-weight: 700;
   color: #111827;
   line-height: 1.2;
+  background: linear-gradient(135deg, #111827 0%, #374151 60%, #111827 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
@@ -29,6 +81,7 @@
   line-height: 1.4;
 }
 
+/* ── Back buttons ── */
 .btnBackDesktop,
 .btnBackMobile {
   display: inline-flex;
@@ -42,21 +95,21 @@
   line-height: 1;
   letter-spacing: 0.01em;
   background: #ffffff;
-  border: none;
+  border: 1px solid #e5e7eb;
   border-radius: 0.875rem;
   padding: 0.625rem 0.875rem;
   position: relative;
   overflow: hidden;
-  transform: translateY(0);
   cursor: pointer;
   transition:
     color 0.2s,
     background 0.2s,
     box-shadow 0.2s,
     transform 0.2s;
-  box-shadow: 0 6px 14px rgba(17, 24, 39, 0.08);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.06);
   font-family: 'Inter', sans-serif;
   -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
 }
 
 .btnBackDesktop svg,
@@ -66,9 +119,9 @@
 
 .btnBackDesktop:hover,
 .btnBackMobile:hover {
-  color: #2563eb;
-  background: #ffffff;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
+  color: #141414;
+  background: #f9fafb;
+  box-shadow: 0 6px 16px rgba(20, 20, 20, 0.1);
   transform: translateY(-1px);
 }
 
@@ -80,55 +133,106 @@
 .btnBackDesktop:focus-visible,
 .btnBackMobile:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #dbeafe;
+  box-shadow: 0 0 0 2px #141414;
 }
 
 .btnBackDesktop:active,
 .btnBackMobile:active {
   transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.08);
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
 }
 
+/* ── Form grid ── */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
+/* ── Footer ── */
 .footer {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .btnBackMobile {
   display: none;
 }
 
+/* ── Submit button ── */
 .btnSubmit {
   width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  background: #2563eb;
+  padding: 1rem 2.25rem;
+  background: #141414;
   color: #fff;
   border-radius: 1.25rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  font-size: 1rem;
   font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+
+.btnSubmit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.btnSubmit:hover::after {
+  left: 100%;
+}
+
 .btnSubmit:hover {
-  background: #1d4ed8;
+  box-shadow:
+    0 14px 28px -4px rgba(20, 20, 20, 0.25),
+    0 0 20px -2px rgba(20, 20, 20, 0.12);
 }
+
+.btnSubmitArrow {
+  transition: transform 0.3s ease;
+}
+
+.btnSubmit:hover .btnSubmitArrow {
+  transform: translateX(4px);
+}
+
 .btnSubmit:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .root::before { animation: none; }
 }
 
 /* ── Mobile ── */
@@ -146,7 +250,11 @@
   }
 
   .headerRow {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .stepBadge {
+    margin-bottom: 0.5rem;
   }
 
   .btnBackDesktop {

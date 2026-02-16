@@ -9,9 +9,9 @@ export default function App() {
         <div className={s.navInner}>
           <div className={s.logoWrap}>
             <div className={s.logoIcon}>
-              <span className={s.logoLetter}>S</span>
+              <span className={s.logoLetter}>B</span>
             </div>
-            <span className={s.logoText}>SaleScout</span>
+            <span className={s.logoText}>birbot</span>
           </div>
 
           <div id="nav-progress-slot" className={s.progressSlot} />

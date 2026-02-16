@@ -1,10 +1,24 @@
 import { useState } from 'react';
-import { Search, Store, ArrowRight, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Search, Store, ArrowRight, ArrowLeft, ClipboardList } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import FormField, { inputClassName } from '@/shared/ui/FormField/FormField';
 import { ALLOWED_DOMAIN } from '@/shared/constants/app';
 import fieldStyles from '@/shared/ui/FormField/FormField.module.css';
 import s from './StepInput.module.css';
+
+const springTransition = { type: 'spring', stiffness: 100, damping: 15 };
+
+const container = {
+  animate: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: springTransition },
+};
 
 export default function StepInput({ initialUrl, initialShop, onBack, onNext }) {
   const { t } = useTranslation();
@@ -31,9 +45,19 @@ export default function StepInput({ initialUrl, initialShop, onBack, onNext }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={s.root}>
-      <div className={s.headerRow}>
+    <motion.form
+      onSubmit={handleSubmit}
+      className={s.root}
+      variants={container}
+      initial="initial"
+      animate="animate"
+    >
+      <motion.div variants={fadeUp} className={s.headerRow}>
         <div>
+          <div className={s.stepBadge}>
+            <ClipboardList size={12} />
+            {t('input.badge')}
+          </div>
           <h2 className={s.title}>{t('input.title')}</h2>
           <p className={s.subtitle}>{t('input.subtitle')}</p>
         </div>
@@ -41,9 +65,9 @@ export default function StepInput({ initialUrl, initialShop, onBack, onNext }) {
           <ArrowLeft size={16} />
           {t('input.back')}
         </button>
-      </div>
+      </motion.div>
 
-      <div className={s.grid}>
+      <motion.div variants={fadeUp} className={s.grid}>
         <FormField
           label={t('input.productLabel')}
           icon={<Search className={fieldStyles.icon} size={18} />}
@@ -71,18 +95,23 @@ export default function StepInput({ initialUrl, initialShop, onBack, onNext }) {
             className={inputClassName(!!errors.shop)}
           />
         </FormField>
-      </div>
+      </motion.div>
 
-      <div className={s.footer}>
+      <motion.div variants={fadeUp} className={s.footer}>
         <button type="button" onClick={onBack} className={s.btnBackMobile}>
           <ArrowLeft size={16} />
           {t('input.back')}
         </button>
-        <button type="submit" className={s.btnSubmit}>
-          {t('input.continue')}
-          <ArrowRight size={18} />
-        </button>
-      </div>
-    </form>
+        <motion.button
+          type="submit"
+          className={s.btnSubmit}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          <span>{t('input.continue')}</span>
+          <ArrowRight size={18} className={s.btnSubmitArrow} />
+        </motion.button>
+      </motion.div>
+    </motion.form>
   );
 }

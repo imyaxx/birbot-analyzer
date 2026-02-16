@@ -46,7 +46,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #2563eb;
+  background: #141414;
   color: #fff;
   border-radius: 1rem;
   font-size: 0.875rem;
@@ -54,12 +54,12 @@
   border: none;
   cursor: pointer;
   transition: background 0.2s;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(20, 20, 20, 0.1);
   justify-content: center;
   font-family: 'Inter', sans-serif;
 }
 .ctaBtn:hover {
-  background: #1d4ed8;
+  background: #141414;
 }
 
 .rankingCenter {

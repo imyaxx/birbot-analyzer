@@ -1,24 +1,127 @@
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import {
+  Sparkles,
+  ArrowRight,
+  TrendingUp,
+  BarChart3,
+  Target,
+  Zap,
+  ShieldCheck,
+  Clock,
+  Users,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import s from './StepWelcome.module.css';
 
-const animations = {
-  badge: {
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-  },
-  title: {
-    initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay: 0.1 },
-  },
-  subtitle: {
-    initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay: 0.2 },
+const springTransition = { type: 'spring', stiffness: 100, damping: 15 };
+
+const container = {
+  animate: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
   },
 };
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: springTransition },
+};
+
+const FLOATING_ICONS = [
+  { Icon: TrendingUp, size: 28, className: 'floatIcon1' },
+  { Icon: BarChart3, size: 24, className: 'floatIcon2' },
+  { Icon: Target, size: 22, className: 'floatIcon3' },
+  { Icon: Zap, size: 20, className: 'floatIcon4' },
+  { Icon: ShieldCheck, size: 26, className: 'floatIcon5' },
+];
+
+function HeroVisual() {
+  return (
+    <div className={s.heroVisual}>
+      <div className={s.dotGrid} />
+
+      <motion.div
+        className={s.ring2}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+      />
+      <motion.div
+        className={s.ring1}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+      />
+
+      <motion.div
+        className={s.orb}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.3 }}
+      >
+        <motion.div
+          className={s.orbInner}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <div className={s.orbCenter}>
+          <TrendingUp size={32} strokeWidth={2} />
+        </div>
+      </motion.div>
+
+      {FLOATING_ICONS.map(({ Icon, size, className }, i) => (
+        <motion.div
+          key={className}
+          className={`${s.floatIcon} ${s[className]}`}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: [0, -8 - i * 2, 0],
+          }}
+          transition={{
+            opacity: { delay: 0.5 + i * 0.1, ...springTransition },
+            scale: { delay: 0.5 + i * 0.1, ...springTransition },
+            y: {
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              ease: 'easeInOut',
+              delay: 0.5 + i * 0.1 + i * 0.3,
+            },
+          }}
+        >
+          <Icon size={size} />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function StatBadges({ t }) {
+  const stats = [
+    { icon: Users, valueKey: 'welcome.stat1Value', labelKey: 'welcome.stat1Label' },
+    { icon: Clock, valueKey: 'welcome.stat2Value', labelKey: 'welcome.stat2Label' },
+    { icon: Target, valueKey: 'welcome.stat3Value', labelKey: 'welcome.stat3Label' },
+  ];
+
+  return (
+    <div className={s.stats}>
+      {stats.map(({ icon: StatIcon, valueKey, labelKey }, i) => (
+        <motion.div
+          key={valueKey}
+          className={s.statItem}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 + i * 0.08, ...springTransition }}
+        >
+          <StatIcon size={16} className={s.statIcon} />
+          <span className={s.statValue}>{t(valueKey)}</span>
+          <span className={s.statLabel}>{t(labelKey)}</span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function StepWelcome({ onNext }) {
   const { t } = useTranslation();
@@ -26,27 +129,42 @@ export default function StepWelcome({ onNext }) {
   return (
     <div className={s.root}>
       <div className={s.grid}>
-        <div>
-          <motion.div {...animations.badge} className={s.badge}>
+        <motion.div
+          className={s.content}
+          variants={container}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.div variants={fadeUp} className={s.badge}>
             <Sparkles size={14} />
             {t('welcome.badge')}
           </motion.div>
-          <motion.h1 {...animations.title} className={s.title}>
+
+          <motion.h1 variants={fadeUp} className={s.title}>
             {t('welcome.title')}
           </motion.h1>
-          <motion.p {...animations.subtitle} className={s.subtitle}>
+
+          <motion.p variants={fadeUp} className={s.subtitle}>
             {t('welcome.subtitle')}
           </motion.p>
+
+          <motion.div variants={fadeUp}>
+            <StatBadges t={t} />
+          </motion.div>
+
           <motion.button
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.98 }}
+            variants={fadeUp}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={onNext}
             className={s.ctaBtn}
           >
-            {t('welcome.cta')}
-            <ArrowRight size={18} />
+            <span>{t('welcome.cta')}</span>
+            <ArrowRight size={18} className={s.ctaArrow} />
           </motion.button>
-        </div>
+        </motion.div>
+
+        <HeroVisual />
       </div>
     </div>
   );

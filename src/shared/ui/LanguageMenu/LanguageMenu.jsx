@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, Check, Globe } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 import { LANGUAGES } from '@/shared/constants/app';
@@ -78,26 +79,37 @@ export default function LanguageMenu() {
         <ChevronDown size={16} className={cn(s.chevron, isOpen && s.chevronOpen)} aria-hidden="true" />
       </button>
 
-      {isOpen && (
-        <div ref={menuRef} id={menuId} role="menu" className={s.menu}>
-          {LANGUAGES.map((lang) => {
-            const isActive = lang.code === i18n.language;
-            return (
-              <button
-                key={lang.code}
-                type="button"
-                role="menuitemradio"
-                aria-checked={isActive}
-                className={cn(s.menuItem, isActive && s.menuItemActive)}
-                onClick={() => handleSelect(lang.code)}
-              >
-                <span>{lang.label}</span>
-                <Check size={14} className={cn(s.menuCheck, isActive && s.menuCheckActive)} />
-              </button>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            ref={menuRef}
+            id={menuId}
+            role="menu"
+            className={s.menu}
+            initial={{ opacity: 0, scale: 0.95, y: -4 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -4 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+          >
+            {LANGUAGES.map((lang) => {
+              const isActive = lang.code === i18n.language;
+              return (
+                <button
+                  key={lang.code}
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={isActive}
+                  className={cn(s.menuItem, isActive && s.menuItemActive)}
+                  onClick={() => handleSelect(lang.code)}
+                >
+                  <span>{lang.label}</span>
+                  <Check size={14} className={cn(s.menuCheck, isActive && s.menuCheckActive)} />
+                </button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

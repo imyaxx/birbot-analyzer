@@ -1,4 +1,4 @@
-export const TRIAL_LOGIN_URL = 'https://app.salescout.me/login';
+export const TRIAL_LOGIN_URL = 'https://app.birbot.me/login';
 
 export const ALLOWED_DOMAIN = 'kaspi.kz';
 
@@ -9,5 +9,5 @@ export const LANGUAGES = [
 ];
 
 export const STORAGE_KEYS = {
-  LANGUAGE: 'salescout-lang',
+  LANGUAGE: 'birbot-lang',
 };

@@ -84,18 +84,18 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #2563eb;
+  background: #141414;
   color: #fff;
   border: none;
   border-radius: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(20, 20, 20, 0.1);
   width: 100%;
 }
 .retryBtn:hover {
-  background: #1d4ed8;
+  background: #141414;
 }
 
 .secondaryBtn {
@@ -106,7 +106,7 @@
   width: 100%;
   min-height: 2.75rem;
   padding: 0.75rem 1.5rem;
-  background: #ffffff;
+  background: #f5f5f5;
   color: #374151;
   border: none;
   border-radius: 1rem;
@@ -130,9 +130,9 @@
   transition: transform 0.2s ease;
 }
 .secondaryBtn:hover {
-  color: #2563eb;
-  background: #ffffff;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
+  color: #141414;
+  background: #f5f5f5;
+  box-shadow: 0 8px 18px rgba(20, 20, 20, 0.12);
   transform: translateY(-1px);
 }
 

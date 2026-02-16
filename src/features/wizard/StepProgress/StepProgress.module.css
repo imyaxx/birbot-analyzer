@@ -30,7 +30,7 @@
   font-size: 0.875rem;
   font-weight: 700;
   border: 1px solid #e5e7eb;
-  background: #fff;
+  background: #f5f5f5;
   color: #9ca3af;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
@@ -42,8 +42,8 @@
 }
 
 .circleActive {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #141414;
+  border-color: #141414;
   color: #fff;
 }
 

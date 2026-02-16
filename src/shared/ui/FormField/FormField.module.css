@@ -34,9 +34,9 @@
   transition: all 0.2s;
 }
 .input:focus {
-  background: #fff;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 4px #eff6ff;
+  background: #f5f5f5;
+  border-color: #141414;
+  box-shadow: 0 0 0 1px rgba(20, 20, 20, 0.45);
 }
 
 .input:focus-visible {
@@ -45,7 +45,7 @@
 
 .inputError {
   border-color: #fca5a5;
-  box-shadow: 0 0 0 2px #fef2f2;
+  box-shadow: 0 0 0 1px #fef2f2;
 }
 
 /* ── Icon ── */

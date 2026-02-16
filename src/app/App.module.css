@@ -16,7 +16,7 @@
 }
 
 :global(*:focus-visible) {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #141414;
   outline-offset: 2px;
 }
 
@@ -34,15 +34,15 @@
 }
 
 .root ::selection {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #141414;
+  color: #f5f5f5;
 }
 
 .nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(245, 245, 245, 0.8);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #f3f4f6;
 }
@@ -66,7 +66,7 @@
 .logoIcon {
   width: 2rem;
   height: 2rem;
-  background: #2563eb;
+  background: #141414;
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
