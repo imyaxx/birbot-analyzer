@@ -8,7 +8,6 @@ import {
   Zap,
   ShieldCheck,
   Clock,
-  Users,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import s from './StepWelcome.module.css';
@@ -97,26 +96,27 @@ function HeroVisual() {
   );
 }
 
-function StatBadges({ t }) {
-  const stats = [
-    { icon: Users, valueKey: 'welcome.stat1Value', labelKey: 'welcome.stat1Label' },
-    { icon: Clock, valueKey: 'welcome.stat2Value', labelKey: 'welcome.stat2Label' },
-    { icon: Target, valueKey: 'welcome.stat3Value', labelKey: 'welcome.stat3Label' },
+function FeatureHighlights({ t }) {
+  const features = [
+    { icon: TrendingUp, textKey: 'welcome.feature1' },
+    { icon: Clock, textKey: 'welcome.feature2' },
+    { icon: Zap, textKey: 'welcome.feature3' },
   ];
 
   return (
-    <div className={s.stats}>
-      {stats.map(({ icon: StatIcon, valueKey, labelKey }, i) => (
+    <div className={s.features}>
+      {features.map(({ icon: FeatureIcon, textKey }, i) => (
         <motion.div
-          key={valueKey}
-          className={s.statItem}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          key={textKey}
+          className={s.featureItem}
+          initial={{ opacity: 0, x: -12 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 + i * 0.08, ...springTransition }}
         >
-          <StatIcon size={16} className={s.statIcon} />
-          <span className={s.statValue}>{t(valueKey)}</span>
-          <span className={s.statLabel}>{t(labelKey)}</span>
+          <div className={s.featureIconWrap}>
+            <FeatureIcon size={16} strokeWidth={2} />
+          </div>
+          <span className={s.featureText}>{t(textKey)}</span>
         </motion.div>
       ))}
     </div>
@@ -141,7 +141,9 @@ export default function StepWelcome({ onNext }) {
           </motion.div>
 
           <motion.h1 variants={fadeUp} className={s.title}>
-            {t('welcome.title')}
+            {t('welcome.titleBefore')}
+            <span className={s.titleAccent}>{t('welcome.titleHighlight')}</span>
+            {t('welcome.titleAfter', { defaultValue: '' })}
           </motion.h1>
 
           <motion.p variants={fadeUp} className={s.subtitle}>
@@ -149,7 +151,7 @@ export default function StepWelcome({ onNext }) {
           </motion.p>
 
           <motion.div variants={fadeUp}>
-            <StatBadges t={t} />
+            <FeatureHighlights t={t} />
           </motion.div>
 
           <motion.button

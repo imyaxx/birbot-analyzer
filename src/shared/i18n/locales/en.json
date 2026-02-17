@@ -2,15 +2,13 @@
   "translation": {
     "welcome": {
       "badge": "Free Instant Analysis",
-      "title": "Find your hidden profit on Kaspi",
-      "subtitle": "See exactly how much you're losing to competitors and get a step-by-step plan to reach Top-1 — in 30 seconds, completely free.",
+      "titleBefore": "Be first in the seller list on ",
+      "titleHighlight": "Kaspi.kz",
+      "subtitle": "Birbot is an auto-dumping bot for Kaspi sellers. It automatically lowers and raises prices based on competitor pricing, so you consistently hold the #1 spot on the product page.",
       "cta": "Analyze my store",
-      "stat1Value": "10,000+",
-      "stat1Label": "sellers analyzed",
-      "stat2Value": "30 sec",
-      "stat2Label": "to get results",
-      "stat3Value": "Top-1",
-      "stat3Label": "achievable goal"
+      "feature1": "More orders by reaching Top-1",
+      "feature2": "Real-time price updates",
+      "feature3": "Fully automatic price management"
     },
     "input": {
       "badge": "Step 2 of 3",

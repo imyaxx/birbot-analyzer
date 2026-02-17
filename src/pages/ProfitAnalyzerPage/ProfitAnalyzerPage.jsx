@@ -6,6 +6,7 @@ import StepInput from '@/features/wizard/StepInput/StepInput';
 import StepAnalysis from '@/features/analysis/StepAnalysis/StepAnalysis';
 import { analyzeKaspi } from '@/shared/lib/onboardingClient';
 import { cn } from '@/shared/lib/utils';
+import sellersBg from '@/assets/sellers-bg.png';
 
 import s from './ProfitAnalyzerPage.module.css';
 
@@ -54,6 +55,13 @@ export default function ProfitAnalyzerPage() {
     window.scrollTo(0, 0);
     setTimeout(() => setStep('analysis'), KEYBOARD_DISMISS_DELAY_MS);
   };
+
+  useEffect(() => {
+    if (step === 'input') {
+      const img = new Image();
+      img.src = sellersBg;
+    }
+  }, [step]);
 
   useEffect(() => {
     if (step === 'analysis' && shouldRunAnalysis.current) {
